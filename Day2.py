@@ -1,1 +1,10 @@
-
+#day2
+a=[1,2,3,4,"achu"]
+b=(11,12,13,14,"chaitu")
+c={"name":"dev","age":15,"class":10,"Grade":"B","Section":"Diamond"}
+print(a)
+print(b)
+print(c)
+print(a[4])
+print(b[3])
+print(c["Section"])
