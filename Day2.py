@@ -1,10 +1,10 @@
 #day2
-a=[1,2,3,4,"achu"]
-b=(11,12,13,14,"chaitu")
-c={"name":"dev","age":15,"class":10,"Grade":"B","Section":"Diamond"}
+a=[1,2,3,4,"phani"]
+b=("swathi",1,2,3,4,4.8,"dhanu","nanna")
+c={"name":"krishna","age":20,"class":"B.Tech.","Grade":"A","Section":"Theta"}
 print(a)
 print(b)
 print(c)
-print(a[4])
-print(b[3])
+print(a[3])
+print(b[0])
 print(c["Section"])
