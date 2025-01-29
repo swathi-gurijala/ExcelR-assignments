@@ -1,0 +1,22 @@
+#Write a Python program to perform sentiment analysis on a given text using the TextBlob library. Display whether the sentiment is positive, negative, or neutral.
+
+
+from textblob import TextBlob
+
+def analyze_sentiment(text):
+    """Analyze sentiment of the given text using TextBlob."""
+    blob = TextBlob(text)
+    polarity = blob.sentiment.polarity
+    
+    if polarity > 0:
+        sentiment = "Positive"
+    elif polarity < 0:
+        sentiment = "Negative"
+    else:
+        sentiment = "Neutral"
+    
+    print(f"Sentiment: {sentiment} (Polarity: {polarity:.2f})")
+
+if __name__ == "__main__":
+    text = "I love this beautiful day!"
+    analyze_sentiment(text)
