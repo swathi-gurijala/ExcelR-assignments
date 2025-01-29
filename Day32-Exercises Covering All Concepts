@@ -1,0 +1,44 @@
+#Write a Python program to load a text file, perform tokenization, calculate the term frequency (TF) of each token, and display the top 5 most frequent tokens.
+
+
+import nltk
+from nltk.tokenize import word_tokenize
+from collections import Counter
+import string
+
+# Download necessary NLTK resources
+nltk.download('punkt')
+
+def load_text(file_path):
+    """Load text from a file."""
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
+
+def preprocess_text(text):
+    """Tokenize and clean text by removing punctuation."""
+    tokens = word_tokenize(text.lower())  # Convert to lowercase
+    tokens = [word for word in tokens if word.isalnum()]  # Remove punctuation and non-alphanumeric tokens
+    return tokens
+
+def calculate_term_frequency(tokens):
+    """Calculate term frequency (TF) of each token."""
+    counter = Counter(tokens)
+    total_tokens = sum(counter.values())
+    tf = {word: count / total_tokens for word, count in counter.items()}
+    return tf
+
+def get_top_tokens(tf, n=5):
+    """Get the top n most frequent tokens based on term frequency."""
+    sorted_tokens = sorted(tf.items(), key=lambda x: x[1], reverse=True)
+    return sorted_tokens[:n]
+
+if __name__ == "__main__":
+    file_path = "sample.txt"  # Replace with your text file path
+    text = load_text(file_path)
+    tokens = preprocess_text(text)
+    tf = calculate_term_frequency(tokens)
+    top_tokens = get_top_tokens(tf)
+    
+    print("Top 5 most frequent tokens:")
+    for word, freq in top_tokens:
+        print(f"{word}: {freq:.4f}")
