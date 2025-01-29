@@ -1,0 +1,16 @@
+#Write a Python program to perform Named Entity Recognition (NER) on a given text using SpaCy. Print the entities and their types.
+
+import spacy
+
+def perform_ner(text):
+    """Perform Named Entity Recognition (NER) on a given text."""
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    
+    print("Entities and their types:")
+    for ent in doc.ents:
+        print(f"{ent.text} -> {ent.label_}")
+
+if __name__ == "__main__":
+    text = "Apple was founded by Steve Jobs, Steve Wozniak, and Ronald Wayne in Cupertino, California in 1976."
+    perform_ner(text)
