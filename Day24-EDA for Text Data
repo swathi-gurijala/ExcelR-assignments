@@ -1,0 +1,35 @@
+#Write a Python program to load a text file, tokenize the text using NLTK, and display the 10 most common words. Use the NLTK library for tokenization.
+
+import nltk
+from nltk.tokenize import word_tokenize
+from collections import Counter
+import string
+
+# Download necessary NLTK resources
+nltk.download('punkt')
+
+def load_text(file_path):
+    """Load text from a file."""
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
+
+def preprocess_text(text):
+    """Tokenize and clean text by removing punctuation."""
+    tokens = word_tokenize(text.lower())  # Convert to lowercase
+    tokens = [word for word in tokens if word.isalnum()]  # Remove punctuation and non-alphanumeric tokens
+    return tokens
+
+def get_most_common_words(tokens, n=10):
+    """Get the n most common words from the tokenized text."""
+    counter = Counter(tokens)
+    return counter.most_common(n)
+
+if __name__ == "__main__":
+    file_path = "sample.txt"  # Replace with your text file path
+    text = load_text(file_path)
+    tokens = preprocess_text(text)
+    common_words = get_most_common_words(tokens)
+    
+    print("Top 10 most common words:")
+    for word, freq in common_words:
+        print(f"{word}: {freq}")
